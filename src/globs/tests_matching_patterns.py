@@ -1,4 +1,4 @@
-from matching_patterns import Lit, Any, Either
+from matching_patterns import Any, Either, Lit
 
 
 # Test Lit class

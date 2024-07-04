@@ -7,7 +7,7 @@ def find_groups(filename):
 
     :param filename: List of filenames to group.
     :type filename: list
-    :return: Dictionary where keys are SHA3-256 hashes and values are sets of filenames.
+    :return: Dictionary where keys are SHA3-256 hashes are sets of filenames.
     :rtype: dict
     """
     groups = {}
@@ -21,7 +21,7 @@ def find_groups(filename):
 
 
 if __name__ == "__main__":
-    """Get filenames from command line arguments, 
+    """Get filenames from command line arguments,
     group them by SHA3-256 hash, and print each group.
     """
     groups = find_groups(sys.argv[1:])

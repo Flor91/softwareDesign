@@ -1,6 +1,8 @@
-from tokenizer import Tokenizer
 from parser import Parser
-from Globs.matching_patterns import Lit, Either
+
+from tokenizer import Tokenizer
+
+from Globs.matching_patterns import Either, Lit
 
 
 def test_tok_empty_string():
@@ -14,11 +16,9 @@ def test_tok_any_either():
         ["Lit", "abc"],
         ["Lit", "def"],
         ["EitherEnd"],
-        ["Lit", "a"]
+        ["Lit", "a"],
     ]
 
 
 def test_parse_either_two_lit():
-    assert Parser()._parse("{abc,def}") == Either(
-        [Lit("abc"), Lit("def")]
-    )
+    assert Parser()._parse("{abc,def}") == Either([Lit("abc"), Lit("def")])

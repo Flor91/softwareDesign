@@ -10,10 +10,7 @@ def shape_new(name):
     :return: A dictionary representing the shape.
     :rtype: dict
     """
-    return {
-        "name": name,
-        "_class": Shape
-    }
+    return {"name": name, "_class": Shape}
 
 
 def shape_density(thing, weight):
@@ -34,7 +31,7 @@ Shape = {
     "density": shape_density,
     "_classname": "Shape",
     "_parent": None,
-    "_new": shape_new
+    "_new": shape_new,
 }
 
 
@@ -88,10 +85,7 @@ def square_new(name, side):
     :return: A dictionary representing the square.
     :rtype: dict
     """
-    return make(Shape, name) | {
-        "side": side,
-        "_class": Square
-    }
+    return make(Shape, name) | {"side": side, "_class": Square}
 
 
 Square = {
@@ -100,7 +94,7 @@ Square = {
     "larger": square_larger,
     "_classname": "Square",
     "_parent": [Shape],
-    "_new": square_new
+    "_new": square_new,
 }
 
 
@@ -154,10 +148,7 @@ def circle_new(name, radius):
     :return: A dictionary representing the circle.
     :rtype: dict
     """
-    return make(Shape, name) | {
-        "radius": radius,
-        "_class": Circle
-    }
+    return make(Shape, name) | {"radius": radius, "_class": Circle}
 
 
 Circle = {
@@ -166,7 +157,7 @@ Circle = {
     "larger": circle_larger,
     "_classname": "Circle",
     "_parent": [Shape],
-    "_new": circle_new
+    "_new": circle_new,
 }
 
 
@@ -220,15 +211,15 @@ def call(thing, method_name, *args, **kwargs):
 
 
 # Example to try the polymorphism of objects and classes
-examples = [make(Square, "sq", 3), make(Circle,"ci", 2)]
-l = 10
+examples = [make(Square, "sq", 3), make(Circle, "ci", 2)]
+larger_than = 10
 for ex in examples:
     n = ex["name"]
     p = call(ex, "perimeter")
     a = call(ex, "area")
     c = ex["_class"]["_classname"]
     d = call(ex, "density", **{"weight": 5})
-    print(f"{n} is a {c} and has perimeter {p:.2f} and area {a:.2f} and density of {d:.2f}")
+    print(f"{n} is a {c} and has perimeter {p:.2f} and area {a:.2f} " f"and density of {d:.2f}")
 
-    r = call(ex, "larger", **{"size": l})
-    print(f"Is {n} larger than {l}? {r}")
+    r = call(ex, "larger", **{"size": larger_than})
+    print(f"Is {n} larger than {larger_than}? {r}")

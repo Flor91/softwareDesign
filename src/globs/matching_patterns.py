@@ -1,6 +1,7 @@
 """
 This module provides a set of classes for pattern matching in strings.
-It includes classes for matching fixed literals, any characters, and either of two patterns.
+It includes classes for matching fixed literals, any characters,
+and either of two patterns.
 """
 
 
@@ -36,9 +37,7 @@ class Match:
         :return: True if the patterns are equal, False otherwise
         :rtype: bool
         """
-        return (other is not None and
-                self.__class__ == other.__class__ and
-                self.rest == other.rest)
+        return other is not None and self.__class__ == other.__class__ and self.rest == other.rest
 
 
 class Null(Match):
@@ -106,8 +105,7 @@ class Lit(Match):
         :return: True if the patterns are equal, False otherwise
         :rtype: bool
         """
-        return (super().__eq__(other) and
-                self.chars == other.chars)
+        return super().__eq__(other) and self.chars == other.chars
 
 
 class Any(Match):

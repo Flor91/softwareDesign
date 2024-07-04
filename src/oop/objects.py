@@ -1,11 +1,13 @@
 """Basic Objects definitions in Python."""
+
 import math
 
 
 class Shape:
     """Generic shape abstract class.
 
-    This class needs to be inherited, and methods need to be defined by its child classes.
+    This class needs to be inherited,
+    and methods need to be defined by its child classes.
     This is a blueprint of how Shapes need to be defined.
 
     Attributes
@@ -17,9 +19,9 @@ class Shape:
     -------
     perimeter(): Abstract method to calculate the perimeter of the shape.
     area(): Abstract method to calculate the area of the shape.
-    density(weight: float) -> float: Calculates the density of the shape given its weight.
+    density(weight: float) -> float: Calculates the density of the shape.
     """
-    
+
     def __init__(self, name):
         """
         Parameters
@@ -82,7 +84,7 @@ class Square(Shape):
     area() -> float:
         Calculates the area of the square.
     """
-    
+
     def __init__(self, name, side):
         """
         Parameters
@@ -113,7 +115,7 @@ class Square(Shape):
         float
             The area of the square.
         """
-        return self.side ** 2
+        return self.side**2
 
 
 class Circle(Shape):
@@ -133,7 +135,7 @@ class Circle(Shape):
     area() -> float:
         Calculates the area of the circle.
     """
-    
+
     def __init__(self, name, radius):
         """
         Parameters
@@ -164,7 +166,7 @@ class Circle(Shape):
         float
             The area of the circle.
         """
-        return math.pi * self.radius ** 2
+        return math.pi * self.radius**2
 
 
 """Objects with the same methods allow us to use polymorphism."""

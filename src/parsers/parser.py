@@ -3,7 +3,7 @@ This module provides a Parser class for parsing token sequences into specific pa
 The patterns include Null, Any, Lit, and Either, each represented by corresponding classes.
 """
 
-from Globs.matching_patterns import Null, Any, Lit, Either
+from Globs.matching_patterns import Any, Either, Lit, Null
 
 
 class Parser:
@@ -24,7 +24,8 @@ class Parser:
             return Null()
 
         front, back = tokens[0], tokens[1:]
-        match front[0]:
+        first = front[0]
+        match first:
             case "Any":
                 handler = self._parse_Any
             case "EitherStart":

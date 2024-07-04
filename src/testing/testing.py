@@ -15,8 +15,8 @@ Functions:
 - run_tests(pattern): Runs tests that match the given pattern.
 """
 
-import time
 import sys
+import time
 
 
 def sign(value):
@@ -88,11 +88,7 @@ def run_tests(pattern):
     :param pattern: The pattern to match test names against.
     :type pattern: str, optional
     """
-    results = {
-        "pass": [],
-        "fail": [],
-        "error": []
-    }
+    results = {"pass": [], "fail": [], "error": []}
 
     setup_func = find_func("setup_")
     teardown_func = find_func("teardown_")
