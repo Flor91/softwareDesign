@@ -41,6 +41,9 @@ def test_sign_negative():
     assert sign(-3) == -1
 
 
+test_sign_negative.skip = True
+
+
 def test_sign_positive():
     """Tests the sign function with a positive value."""
     assert sign(3) == 1
@@ -49,6 +52,9 @@ def test_sign_positive():
 def test_sign_zero():
     """Tests the sign function with zero."""
     assert sign(0) == 0
+
+
+test_sign_zero.fail = True
 
 
 def test_sign_error():
@@ -64,6 +70,14 @@ def setup_tests():
 def teardown_tests():
     """Prints a teardown message after tests."""
     print("Teardown after tests")
+
+
+def classify(func):
+    if hasattr(func, "skip") and func.skip:
+        return "skip"
+    if hasattr(func, "fail") and func.fail:
+        return "fail"
+    return "run"
 
 
 def find_func(prefix):
@@ -93,20 +107,22 @@ def run_tests(pattern):
     setup_func = find_func("setup_")
     teardown_func = find_func("teardown_")
 
-    for name, test in globals().items():
-        if not name.startswith("test_"):
-            continue
-        if pattern and pattern not in name:
-            continue
+    all_names = [n for n in globals() if n.startswith(pattern)]
+    for name in all_names:
+        func = globals()[name]
+        kind = classify(func)
         try:
-            if setup_func:
-                setup_func()
-            start = time.time()
-            if callable(test):
-                test()
-                results["pass"].append(name)
+            if kind == "skip":
+                print(f"skip: {name}")
             else:
-                results["error"].append(name)
+                if setup_func:
+                    setup_func()
+                start = time.time()
+                if callable(func):
+                    func()
+                    results["pass"].append(name)
+                else:
+                    results["error"].append(name)
         except AssertionError:
             results["fail"].append(name)
         except Exception:
