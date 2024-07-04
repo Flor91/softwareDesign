@@ -1,4 +1,4 @@
-[Software Design by Example](https://third-bit.com/sdxpy/)
+# Software Design by Example
 
 > The complexity of a system increases more rapidly than its size.
 
