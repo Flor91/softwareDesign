@@ -4,7 +4,6 @@ It includes functions to find and print functions with a specific prefix and to 
 """
 
 import pprint
-from testing import *
 
 var = 123
 
