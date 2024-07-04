@@ -1,5 +1,6 @@
 from tokenizer import Tokenizer
 from parser import Parser
+from Globs.matching_patterns import Lit, Either
 
 
 def test_tok_empty_string():

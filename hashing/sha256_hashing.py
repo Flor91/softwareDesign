@@ -3,6 +3,13 @@ from hashlib import sha3_256
 
 
 def find_groups(filename):
+    """Find groups of filenames based on their SHA3-256 hash.
+
+    :param filename: List of filenames to group.
+    :type filename: list
+    :return: Dictionary where keys are SHA3-256 hashes and values are sets of filenames.
+    :rtype: dict
+    """
     groups = {}
     for fn in filename:
         data = open(fn, "rb").read()
@@ -14,6 +21,9 @@ def find_groups(filename):
 
 
 if __name__ == "__main__":
+    """Get filenames from command line arguments, 
+    group them by SHA3-256 hash, and print each group.
+    """
     groups = find_groups(sys.argv[1:])
     for filenames in groups.values():
         print(", ".join(sorted(filenames)))

@@ -1,14 +1,15 @@
-"""Tokenize a text
-Parser's first step. The first stage groups characters into atoms of text called “tokens“,
-which are meaningful pieces of text like the digits making up a number or the letters making up a variable name.
-Our grammar’s tokens are the special characters ,, {, }, and *.
-Any sequence of one or more other characters is a single multi-letter token.
-
-1. If a character is not special, then append it to the current literal (if there is one) or start a new literal (if there isn’t).
-2. If a character is special, then close the existing literal (if there is one) and create a token for the special character.
-
-The result of tokenization is a flat list of tokens. The second stage of parsing assembles tokens to create an abstract syntax tree (AST) that represents the structure of what was parsed.
 """
+Tokenizer for parsing text into meaningful tokens.
+
+This module provides a Tokenizer class to break down text into tokens such as
+literals and special characters. It follows a simple grammar where special
+characters include '*', '{', '}', and ','. Any sequence of other characters
+is considered a literal token.
+
+Classes:
+    Tokenizer: A class to tokenize input text based on predefined rules.
+"""
+
 import string
 
 CHARS = set(string.ascii_letters + string.digits)
@@ -16,13 +17,20 @@ CHARS = set(string.ascii_letters + string.digits)
 
 class Tokenizer:
     def __init__(self):
+        """Initialize the Tokenizer instance."""
         self._setup()
 
     def _setup(self):
+        """Setup/reset the tokenizer's internal state."""
         self.result = []
         self.current = ""
 
     def _add(self, thing):
+        """Add a token to the result list.
+
+        :param thing: The token to be added.
+        :type thing: str or None
+        """
         if len(self.current) > 0:
             self.result.append(["Lit", self.current])
             self.current = ""
@@ -30,6 +38,14 @@ class Tokenizer:
             self.result.append([thing])
 
     def tok(self, text):
+        """Tokenize the input text.
+
+        :param text: The text to be tokenized.
+        :type text: str
+        :raises NotImplementedError: If an unknown character is encountered.
+        :return: A list of tokens.
+        :rtype: list
+        """
         self._setup()
         for ch in text:
             if ch == "*":
@@ -46,5 +62,3 @@ class Tokenizer:
                 raise NotImplementedError(f"What is '{ch}'?")
         self._add(None)
         return self.result
-
-
