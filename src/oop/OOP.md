@@ -1,87 +1,41 @@
-## Object-Oriented Programming
+# Object-Oriented Programming
 
-Python is an object oriented programming language.
-Almost everything in Python is an object, with its properties and methods.
-A Class is like an object constructor, or a "blueprint" for creating objects.
+Python is an object-oriented programming language. Almost everything in Python is an object, with its properties and methods. A class is like an object constructor or a "blueprint" for creating objects.
 
-- Objects are useful without classes, but classes make them easier to understand.
-- A well-designed class defines a **contract** that code using its instances can rely on.
-- Objects that respect the same contract are **polymorphic**, i.e., they can be used interchangeably even if they do different specific things.
-- Objects and classes can be thought of as dictionaries with stereotyped behavior.
-- Most languages allow functions and methods to take a variable number of arguments.
-- **Inheritance** can be implemented in several ways that differ in the order in which objects and classes are searched for methods.
+## Key Concepts
 
-Invented to solve two problems:
-1. What is the natural way of representing real-world "things" in code?
-2. How can we organize our code to make it easier to understand, test and extend?
+### Classes and Objects
+- **Class**: A blueprint for creating objects. It defines a contract that code using its instances can rely on.
+- **Object**: An instance of a class. It has attributes (data) and methods (functions).
 
+### Polymorphism
+- Polymorphism allows different classes to be used interchangeably, as long as they implement the same interface.
+- Reduces cognitive load by letting users ignore the differences between objects that adhere to the same contract.
 
-### Objects
+### Inheritance
+- **Inheritance**: A way to form new classes using classes that have already been defined. It helps in code reusability and the creation of a hierarchical classification.
+- **Multiple Inheritance**: Python allows a class to inherit from multiple classes.
 
-Let's define a Shape:
-```python
-class Shape:
-	def __init__(self, name):
-		self.name = name
+### Methods
+- **Class Methods**: Functions defined inside a class that take the class itself as a parameter rather than an instance of the class.
+- **Static Methods**: Functions defined within a class that do not require an instance of the class or the class itself as a parameter.
 
-	def perimeter(self):
-		raise NotImplementedError("perimeter")
-		
-	def area(self):
-		raise NotImplementedError("area")
-```
+### Cache
+- A storage mechanism that keeps copies of data to fulfill future requests faster. Commonly used in hardware (e.g., CPU cache) and software (e.g., reducing network traffic).
 
-A specification like this is a *contract* because an object must satisfy it in order to be considered a shape.
+## Benefits of OOP
+1. **Natural Representation**: Provides a natural way of representing real-world "things" in code.
+2. **Organized Code**: Makes the code easier to understand, test, and extend by organizing it into classes and objects.
 
-We can **derive** classes from Shape to represent squares and circles.
+## Glossary
 
-```python
-class Square(Shape):
-	def __init__(self, name, side):
-		super().__init__(name)
-		self.side = side
-
-	def perimeter(self):
-		return 4 * self.side
-		
-	def area(self):
-		return self.side ** 2
-
-
-class Circle(Shape):
-    def __init__(self, name, radius):
-        super().__init__(name)
-        self.radius = radius
-
-    def perimeter(self):
-        return 2 * math.pi * self.radius
-
-    def area(self):
-        return math.pi * self.radius ** 2
-```
-
-Since squares and circles have the same methods, we can use them interchangeably. This is called **polymorphism**, and it reduces cognitive load by allowing the people using related things to ignore their differences.
-
-> Having many different implementations of the same interface. If a set of functions or objects are polymorphic, they can be called interchangeably
-
-```python
-examples = [Square("sq", 3), Circle("ci", 2)]
-for thing in examples:
-    n = thing.name
-    p = thing.perimeter()
-    a = thing.area()
-    print(f"{n} has perimeter {p:.2f} and area {a:.2f}")
-```
-
-![](Pasted%20image%2020240626113600.png)
-
-
-Classes define contracts, by defining methods.
-These methods include a constructor.
-Objects are instances of a Class.
-Objects has attributes.
-
-Python allows for *multiple inheritance* - Inheriting from two or more classes when creating a new class.
-*Class methods* are functions defined inside a class, that takes class object as an input instead of an instance of a class.
-*Static methods* are functions defined within a class that do not require either the class itself or an instance of a class as a parameter.
-*Cache*: Something that stores copies of data so that future requests for it can be satisfied more quickly. The CPU in a computer uses a hardware cache to hold recently-accessed values; many programs rely on a software cache to reduce network traffic and latency.
+- **Class**: A blueprint for objects.
+- **Object**: An instance of a class.
+- **Attribute**: A variable that holds data associated with a class and its objects.
+- **Method**: A function defined within a class that operates on instances of the class.
+- **Constructor**: A special method used to initialize objects.
+- **Inheritance**: A mechanism for creating a new class from an existing class.
+- **Polymorphism**: The ability to use different classes interchangeably through a common interface.
+- **Class Method**: A method that receives the class as its first argument.
+- **Static Method**: A method that does not receive an implicit first argument (neither the instance nor the class).
+- **Cache**: A storage layer that holds copies of data for faster access.

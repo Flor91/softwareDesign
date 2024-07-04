@@ -2,7 +2,7 @@ from parser import Parser
 
 from tokenizer import Tokenizer
 
-from Globs.matching_patterns import Either, Lit
+from src.globs.matching_patterns import Either, Lit
 
 
 def test_tok_empty_string():
