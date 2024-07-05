@@ -14,7 +14,7 @@ As the number of components in a system grows, so does the complexity. However, 
    1. [Finding duplicate files - Brute force approach](src/hashing/force_brute.py)
    2. [Finding duplicate files - Hashing approach](src/hashing/sha256_hashing.py)
 3. [Globs](src/globs/matching_patterns.md)
-   1. [Implement Matching patterns](src/globs/matching_patterns.py) 
+   1. [Implement Matching patterns](src/globs/matching_patterns.py)
 4. [Parsers](src/parsers/parsing.md)
    1. [Implement a Tokenizer](src/parsers/tokenizer.py)
    2. [Implement a Parser](src/parsers/parser.py)
@@ -22,4 +22,6 @@ As the number of components in a system grows, so does the complexity. However, 
    1. [Introspection](src/testing/instrospection.py)
    2. [Running tests](src/testing/testing.py)
 6. [Interpreters](src/interpreters/interpreters.md)
-   1. 
+   1. [Expressions](src/interpreters/expressions.py)
+7. [Functions](src/functions/functions.md)
+8. [Protocols]
